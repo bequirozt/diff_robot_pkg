@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<launch>
+    
+    <!-- Carga del modelo urdf del robot -->
+    <arg 
+        name="model_urdf" 
+        default="$(find diff_robot_pkg)/urdf/diff_robot_model.urdf"/>
+    <param 
+        name="robot_description" 
+        command="$(find xacro)/xacro.py $(arg model_urdf)"/>
+
+    <!-- Publica el estado de los marcos de referencia de las juntas fijas -->
+    <node 
+        pkg="robot_state_publisher" 
+        type="robot_state_publisher" 
+        name="r_s_p">
+    </node>
+
+    <!-- Publica el estado de los marcos de referencia de las juntas moviles -->
+    <node 
+        pkg="joint_state_publisher" 
+        type="joint_state_publisher" 
+        name="j_s_p">
+    </node>
+
+    <!-- Abre RVIZ-->
+    <node 
+        pkg="rviz" 
+        type="rviz" 
+        name="rviz">
+    </node>
+
+</launch>

@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<launch>
+    <node 
+        pkg="diff_robot_pkg" 
+        type="diff_robot_node.py" 
+        name="diff_robot_node" 
+    />
+</launch>
